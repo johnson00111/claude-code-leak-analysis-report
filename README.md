@@ -3,6 +3,7 @@
 > 31-slide technical deep dive into the March 31, 2026 Claude Code source code leak
 
 ## 🔗 [View Presentation →](https://johnson00111.github.io/claude-code-leak-analysis-report/)
+## 📝 [Read the Blog Post →](https://johnson00111.github.io/blog/claude-code-leak-analysis/)
 
 ## What's Inside
 
