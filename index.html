@@ -97,7 +97,7 @@
 <script>
 const TOTAL = 31;
 let current = 1;
-let lang = 'zh';
+let lang = new URLSearchParams(window.location.search).get('lang') === 'en' ? 'en' : 'zh';
 
 function pad(n) { return String(n).padStart(2, '0'); }
 function slidePath(n) { return `slides/${lang}/slide-${pad(n)}.jpg`; }
@@ -131,7 +131,9 @@ function setLang(l) {
   lang = l;
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim() === (l === 'zh' ? '中文' : 'EN')));
   document.getElementById('dl-link').href = `pptx/claude-code-leak-${l}.pptx`;
-  // Rebuild thumbnails
+  const url = new URL(window.location);
+  url.searchParams.set('lang', l);
+  history.replaceState(null, '', url);
   buildThumbs();
   render();
 }
@@ -186,8 +188,7 @@ const origRender = render;
 render = function() { origRender(); preload(); };
 
 // Init
-buildThumbs();
-render();
+setLang(lang);
 </script>
 </body>
 </html>
